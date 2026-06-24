@@ -1,0 +1,16 @@
+@{
+  ViewData["Title"] = "Shop Information";
+}
+
+<div class="container mt-4">
+  <div class="card border-primary" style="max-width: 500px">
+    <div class="card-header bg-primary text-white">
+      <h3 class="card-title mb-0">@ViewBag.ShopName</h3>
+    </div>
+    <div class="card-body">
+      <p class="card-text"><strong>អាសយដ្ឋាន:</strong> @ViewBag.Address</p>
+      <p class="card-text"><strong>លេខទូរស័ព្ទ:</strong> @ViewBag.PhoneNumber</p>
+      <p class="card-text"><strong>ម៉ោងបើក:</strong> @ViewBag.OpenHours</p>
+    </div>
+  </div>
+</div>
