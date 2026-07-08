@@ -1,0 +1,35 @@
+@model List<MvcExercises.Models.Doctor>
+@{
+    ViewData["Title"] = "Doctor Schedule";
+}
+
+<h2 class="mb-3">Doctor Schedule</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-primary">
+        <tr>
+            <th style="width: 60px;">Id</th>
+            <th>Name</th>
+            <th>Specialty</th>
+            <th>Available Days</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doctor in Model)
+        {
+            <tr>
+                <td>@doctor.Id</td>
+                <td>@doctor.Name</td>
+                <td>
+                    <span class="badge bg-info text-dark">@doctor.Specialty</span>
+                </td>
+                <td>
+                    @foreach (var day in doctor.AvailableDays)
+                    {
+                        <span class="badge bg-success me-1">@day</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+@model MvcExercises.Models.Department
+@{
+    ViewData["Title"] = "Department";
+}
+
+<h2 class="mb-1">Department: @Model.Name</h2>
+<p class="text-muted">Department ID: @Model.Id</p>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th style="width: 80px;">#</th>
+            <th>Staff Member Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ int i = 1; }
+        @foreach (var staff in Model.StaffMembers)
+        {
+            <tr>
+                <td>@i</td>
+                <td>@staff</td>
+            </tr>
+            i++;
+        }
+    </tbody>
+</table>

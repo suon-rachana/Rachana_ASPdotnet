@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "2WUo4iHh5EE=",
+  "success": true,
+  "projectFilePath": "D:\\AU\\Y4T1\\ASP.NET AND SQL SERVER\\Rachana_ASPdotnet\\Department And Doctor\\MvcExercises\\MvcExercises.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\KIT Computer\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.28\\microsoft.netcore.app.ref.8.0.28.nupkg.sha512",
+    "C:\\Users\\KIT Computer\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.28\\microsoft.windowsdesktop.app.ref.8.0.28.nupkg.sha512",
+    "C:\\Users\\KIT Computer\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.28\\microsoft.aspnetcore.app.ref.8.0.28.nupkg.sha512",
+    "C:\\Users\\KIT Computer\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.28\\microsoft.netcore.app.host.win-x64.8.0.28.nupkg.sha512"
+  ],
+  "logs": []
+}

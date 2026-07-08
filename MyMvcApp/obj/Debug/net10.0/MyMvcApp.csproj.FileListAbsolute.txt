@@ -95,3 +95,4 @@ D:\AU\Y4T1\ASP.NET AND SQL SERVER\Rachana_ASPdotnet\MyMvcApp\obj\Debug\net10.0\r
 D:\AU\Y4T1\ASP.NET AND SQL SERVER\Rachana_ASPdotnet\MyMvcApp\obj\Debug\net10.0\MyMvcApp.pdb
 D:\AU\Y4T1\ASP.NET AND SQL SERVER\Rachana_ASPdotnet\MyMvcApp\obj\Debug\net10.0\MyMvcApp.genruntimeconfig.cache
 D:\AU\Y4T1\ASP.NET AND SQL SERVER\Rachana_ASPdotnet\MyMvcApp\obj\Debug\net10.0\ref\MyMvcApp.dll
+D:\AU\Y4T1\ASP.NET AND SQL SERVER\Rachana_ASPdotnet\MyMvcApp\obj\Debug\net10.0\MyMvcApp.sourcelink.json

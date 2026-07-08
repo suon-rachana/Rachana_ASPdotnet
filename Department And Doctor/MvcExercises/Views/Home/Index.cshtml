@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mb-4">
+    <h1 class="display-5">MVC Exercises — Hard Level</h1>
+    <p class="lead text-muted">ASP.NET Core MVC · Strongly-typed Views</p>
+</div>
+
+<div class="row g-4 justify-content-center">
+    <div class="col-md-5">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">លំហាត់ 5.5 — DepartmentStaff</h5>
+                <p class="card-text text-muted">
+                    A Department object (Id, Name, StaffMembers) passed to a strongly-typed
+                    View that renders the staff list in a table using Razor.
+                </p>
+                <a asp-controller="Department" asp-action="Index" class="btn btn-primary">
+                    View Department
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">លំហាត់ 5.6 — DoctorSchedule</h5>
+                <p class="card-text text-muted">
+                    A List of 2 Doctors (Id, Name, Specialty, AvailableDays) rendered in an
+                    HTML table styled with Bootstrap badges.
+                </p>
+                <a asp-controller="Doctor" asp-action="Index" class="btn btn-primary">
+                    View Doctors
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
