@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section Breadcrumb {
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page">Home</li>
+        </ol>
+    </nav>
+}
+
+<div class="text-center">
+    <p class="lead">Welcome to AdminPanel — an ASP.NET Core MVC admin panel using the default template layout.</p>
+</div>
+
+<div class="row g-3 mt-3">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Dashboard</h5>
+                <p class="card-text text-muted">Stat cards, an enrollment chart, and recent activity.</p>
+                <a asp-controller="Admin" asp-action="Index" class="btn btn-primary btn-sm">Open dashboard</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Users</h5>
+                <p class="card-text text-muted">Account table with a live filter and status badges.</p>
+                <a asp-controller="Admin" asp-action="Users" class="btn btn-primary btn-sm">Open users</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Reports</h5>
+                <p class="card-text text-muted">Report tiles that inject their own page CSS.</p>
+                <a asp-controller="Admin" asp-action="Reports" class="btn btn-primary btn-sm">Open reports</a>
+            </div>
+        </div>
+    </div>
+</div>

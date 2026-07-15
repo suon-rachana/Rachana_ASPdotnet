@@ -1,0 +1,75 @@
+@{
+    ViewData["Title"] = "Reports";
+}
+
+@* Breadcrumb — required: true, so it must be here. *@
+@section Breadcrumb {
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Reports</li>
+        </ol>
+    </nav>
+}
+
+@*
+    NOTE what this page does NOT have:
+      - no @section PageActions  -> the area right of the title renders empty
+      - no @section Scripts      -> no page JS is injected
+    Both are required: false in the layout, so leaving them out is fine.
+
+    Try deleting the Breadcrumb section above and reloading — you'll get:
+      InvalidOperationException: The layout page "/Views/Shared/_Layout.cshtml"
+      cannot find the section "Breadcrumb" ...
+    That is the difference between required: true and required: false.
+*@
+
+@* This page DOES use the Styles section — CSS only this page needs. *@
+@section Styles {
+    <style>
+        .report-tile {
+            border-left: 4px solid #1b6ec2;
+        }
+
+        .report-meta {
+            font-size: .75rem;
+            border-top: 1px dashed #dee2e6;
+            padding-top: .75rem;
+        }
+    </style>
+}
+
+@* ---------- @RenderBody() content ---------- *@
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card h-100 report-tile">
+            <div class="card-body">
+                <h5 class="card-title">Enrollment summary</h5>
+                <p class="card-text text-muted small">Headcount per course and term, with year-over-year comparison.</p>
+                <button class="btn btn-outline-primary btn-sm">Generate</button>
+                <p class="report-meta text-muted mt-3 mb-0">Last run: Jul 12, 2026</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 report-tile">
+            <div class="card-body">
+                <h5 class="card-title">Fee collection</h5>
+                <p class="card-text text-muted small">Paid, pending, and overdue balances grouped by faculty.</p>
+                <button class="btn btn-outline-primary btn-sm">Generate</button>
+                <p class="report-meta text-muted mt-3 mb-0">Last run: Jul 1, 2026</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 report-tile">
+            <div class="card-body">
+                <h5 class="card-title">Attendance</h5>
+                <p class="card-text text-muted small">Session attendance rates flagged below the 75% threshold.</p>
+                <button class="btn btn-outline-primary btn-sm">Generate</button>
+                <p class="report-meta text-muted mt-3 mb-0">Not run yet</p>
+            </div>
+        </div>
+    </div>
+</div>

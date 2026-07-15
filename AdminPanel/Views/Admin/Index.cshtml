@@ -1,0 +1,94 @@
+@model AdminPanel.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@* ---- Fills @RenderSectionAsync("Breadcrumb", required: true) ---- *@
+@section Breadcrumb {
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+        </ol>
+    </nav>
+}
+
+@* ---- Fills @RenderSectionAsync("PageActions", required: false) ---- *@
+@section PageActions {
+    <button class="btn btn-outline-secondary btn-sm" type="button">Export CSV</button>
+    <button class="btn btn-primary btn-sm" type="button">New announcement</button>
+}
+
+@* ================================================================
+   Everything below is OUTSIDE any @section block, so it lands in
+   @RenderBody() in the layout.
+   ================================================================ *@
+
+<div class="row g-3">
+    @foreach (var stat in Model.Stats)
+    {
+        <div class="col-6 col-lg-3">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h6 class="card-subtitle text-muted mb-2">@stat.Label</h6>
+                    <p class="h3 mb-1">@stat.Value</p>
+                    <span class="badge @(stat.IsPositive ? "bg-success" : "bg-danger")">@stat.Delta</span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row g-3 mt-1">
+    <div class="col-lg-7">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span>Enrollments</span>
+                <small class="text-muted">Last 6 months</small>
+            </div>
+            <div class="card-body">
+                <canvas id="enrollChart" height="150"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card h-100">
+            <div class="card-header">Recent activity</div>
+            <ul class="list-group list-group-flush">
+                @foreach (var log in Model.RecentActivity)
+                {
+                    <li class="list-group-item">
+                        <div><strong>@log.Actor</strong> @log.Action</div>
+                        <small class="text-muted">@log.When.ToString("MMM d, h:mm tt")</small>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+@* ---- Fills @RenderSectionAsync("Scripts", required: false) ----
+   Chart.js loads ONLY on this page. The Users page never downloads it. *@
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@@4.4.1/dist/chart.umd.min.js"></script>
+    <script>
+        const ctx = document.getElementById('enrollChart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: @Html.Raw(Json.Serialize(Model.MonthLabels)),
+                datasets: [{
+                    label: 'Enrollments',
+                    data: @Html.Raw(Json.Serialize(Model.EnrollmentsByMonth)),
+                    backgroundColor: '#1b6ec2',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+    </script>
+}
