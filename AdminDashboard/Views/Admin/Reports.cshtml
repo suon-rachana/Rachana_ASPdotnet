@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "Reports";
+}
+
+@section Breadcrumb {
+    <nav class="crumb">Admin <span>/</span> Manage <span>/</span> Reports</nav>
+}
+
+
+
+@section Styles {
+    <style>
+        .report-tile {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 22px;
+            background: #fff;
+            height: 100%;
+        }
+
+        .report-tile h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .report-tile p {
+            color: var(--muted);
+            font-size: .875rem;
+            margin-bottom: 16px;
+        }
+
+        .report-meta {
+            font-size: .75rem;
+            color: var(--muted);
+            border-top: 1px dashed var(--line);
+            padding-top: 12px;
+        }
+    </style>
+}
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="report-tile">
+            <h3>Enrollment summary</h3>
+            <p>Headcount per course and term, with year-over-year comparison.</p>
+            <button class="btn btn-outline-secondary btn-sm">Generate</button>
+            <p class="report-meta mt-3 mb-0">Last run: Jul 12, 2026</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="report-tile">
+            <h3>Fee collection</h3>
+            <p>Paid, pending, and overdue balances grouped by faculty.</p>
+            <button class="btn btn-outline-secondary btn-sm">Generate</button>
+            <p class="report-meta mt-3 mb-0">Last run: Jul 1, 2026</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="report-tile">
+            <h3>Attendance</h3>
+            <p>Session attendance rates flagged below the 75% threshold.</p>
+            <button class="btn btn-outline-secondary btn-sm">Generate</button>
+            <p class="report-meta mt-3 mb-0">Not run yet</p>
+        </div>
+    </div>
+</div>

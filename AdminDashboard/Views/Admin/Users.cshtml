@@ -1,0 +1,75 @@
+@model List<AdminDashboard.Models.UserAccount>
+@{
+    ViewData["Title"] = "Users";
+}
+
+
+@section Breadcrumb {
+    <nav class="crumb">Admin <span>/</span> Manage <span>/</span> Users</nav>
+}
+
+@section PageActions {
+    <button class="btn btn-accent btn-sm" type="button">Add user</button>
+}
+
+
+
+<section class="panel">
+    <div class="panel-head">
+        <h2 class="panel-title">All accounts <span class="count">@Model.Count</span></h2>
+        <input id="userFilter" class="form-control form-control-sm filter-input" type="search"
+               placeholder="Filter by name or email…" />
+    </div>
+
+    <div class="table-responsive">
+        <table class="table align-middle mb-0" id="usersTable">
+            <thead>
+                <tr>
+                    <th style="width:60px;">#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Joined</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td class="text-muted">@user.Id</td>
+                        <td class="fw-semibold">@user.FullName</td>
+                        <td class="text-muted">@user.Email</td>
+                        <td><span class="badge badge-role">@user.Role</span></td>
+                        <td>
+                            @{
+                                var statusClass = user.Status switch
+                                {
+                                    "Active" => "badge-active",
+                                    "Pending" => "badge-pending",
+                                    "Suspended" => "badge-suspended",
+                                    _ => "badge-role"
+                                };
+                            }
+                            <span class="badge @statusClass">@user.Status</span>
+                        </td>
+                        <td class="text-muted">@user.JoinedOn.ToString("MMM d, yyyy")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+s
+@section Scripts {
+    <script>
+        $('#userFilter').on('keyup', function () {
+            const term = $(this).val().toLowerCase();
+            $('#usersTable tbody tr').each(function () {
+                const text = $(this).text().toLowerCase();
+                $(this).toggle(text.indexOf(term) > -1);
+            });
+        });
+    </script>
+}

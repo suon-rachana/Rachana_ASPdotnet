@@ -1,0 +1,84 @@
+@model AdminDashboard.Models.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard";
+
+}
+
+@section Breadcrumb {
+    <nav class="crumb">Admin <span>/</span> Dashboard</nav>
+}
+
+@section PageActions {
+    <button class="btn btn-outline-secondary btn-sm" type="button">Export CSV</button>
+    <button class="btn btn-accent btn-sm" type="button">New announcement</button>
+}
+
+
+<div class="stat-grid">
+    @foreach (var stat in Model.Stats)
+    {
+        <div class="stat-card">
+            <p class="stat-label">@stat.Label</p>
+            <p class="stat-value">@stat.Value</p>
+            <span class="stat-delta @(stat.IsPositive ? "up" : "down")">@stat.Delta</span>
+        </div>
+    }
+</div>
+
+<div class="row g-4 mt-1">
+    <div class="col-lg-7">
+        <section class="panel">
+            <div class="panel-head">
+                <h2 class="panel-title">Enrollments</h2>
+                <span class="panel-note">Last 6 months</span>
+            </div>
+            <canvas id="enrollChart" height="150"></canvas>
+        </section>
+    </div>
+
+    <div class="col-lg-5">
+        <section class="panel">
+            <div class="panel-head">
+                <h2 class="panel-title">Recent activity</h2>
+            </div>
+            <ul class="activity">
+                @foreach (var log in Model.RecentActivity)
+                {
+                    <li>
+                        <div class="activity-dot"></div>
+                        <div>
+                            <p class="activity-text"><strong>@log.Actor</strong> @log.Action</p>
+                            <p class="activity-time">@log.When.ToString("MMM d, h:mm tt")</p>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </section>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+    const ctx = document.getElementById('enrollChart');
+    new Chart(ctx, {
+    type: 'bar',
+    data: {
+    labels: @Html.Raw(Json.Serialize(Model.MonthLabels)),
+    datasets: [{
+    label: 'Enrollments',
+    data: @Html.Raw(Json.Serialize(Model.EnrollmentsByMonth)),
+    backgroundColor: '#4F46E5',
+    borderRadius: 6,
+    barThickness: 28
+    }]
+    },
+    options: {
+    plugins: { legend: { display: false } },
+    scales: {
+    y: { beginAtZero: true, grid: { color: '#EEF0F4' } },
+    x: { grid: { display: false } }
+    }
+    }
+    });
+</script>
+}

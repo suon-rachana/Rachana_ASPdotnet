@@ -1,0 +1,38 @@
+@*
+    Views/Shared/_Sidebar.cshtml
+    A PARTIAL VIEW — reusable markup, no layout of its own.
+    Rendered from _AdminLayout with <partial name="_Sidebar" />
+*@
+@{
+    // Read the current route so we can highlight the active link
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <span class="brand-mark">CA</span>
+        <span class="brand-text">Campus Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+        <p class="nav-label">Overview</p>
+        <a class="nav-item @(currentAction == "Index" ? "active" : "")"
+           asp-controller="Admin" asp-action="Index">
+            Dashboard
+        </a>
+
+        <p class="nav-label">Manage</p>
+        <a class="nav-item @(currentAction == "Users" ? "active" : "")"
+           asp-controller="Admin" asp-action="Users">
+            Users
+        </a>
+        <a class="nav-item @(currentAction == "Reports" ? "active" : "")"
+           asp-controller="Admin" asp-action="Reports">
+            Reports
+        </a>
+    </nav>
+
+    <div class="sidebar-foot">
+        <p class="term-tag">Year 4 · Term 1</p>
+    </div>
+</aside>
