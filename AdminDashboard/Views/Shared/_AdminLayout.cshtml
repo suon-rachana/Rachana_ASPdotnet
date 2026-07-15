@@ -1,23 +1,6 @@
-@*
-    ============================================================
-    Views/Shared/_AdminLayout.cshtml
-    ------------------------------------------------------------
-    The LAYOUT. Everything shared by every admin page lives here:
-    the <head>, the sidebar, the top bar, the footer, the scripts.
-
-    Two mechanisms let a child View inject its own content:
-
-      @RenderBody()          -> the child View's main content.
-                                Exactly ONE per layout. Required.
-
-      @RenderSection(name)   -> a NAMED hole the child View fills
-                                with @section name { ... }.
-                                Many allowed. Can be optional
-                                (required: false) or mandatory.
-    ============================================================
-*@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,6 +15,7 @@
     @* SECTION 1 — page-specific CSS. Optional: pages that don't need it just skip it. *@
     @await RenderSectionAsync("Styles", required: false)
 </head>
+
 <body>
 
     <div class="admin-shell">
@@ -83,4 +67,5 @@
        This is the single most common use of @RenderSection. *@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
